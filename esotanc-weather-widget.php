@@ -91,8 +91,7 @@ class esotanc_weather_widget extends WP_Widget {
 		function retrieveYahooWeather($zipCode="HUXX0002_f.xml") {
 			$cache = dirname(__FILE__) . '/cache';
 			$yahooUrl = "http://xml.weather.yahoo.com/forecastrss/";
-			$yahooZip = "$zipCode";
-			$yahooFullUrl = $yahooUrl . $yahooZip; 
+			$yahooFullUrl = $yahooUrl . $zipCode; 
 			$curlObject = curl_init();
 			curl_setopt($curlObject,CURLOPT_URL,$yahooFullUrl);
 			curl_setopt($curlObject,CURLOPT_HEADER,false);
