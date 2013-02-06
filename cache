@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+		<rss version="2.0" xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
+			<channel>
+		
+<title>Yahoo! Weather - Debrecen, HU</title>
+<link>http://us.rd.yahoo.com/dailynews/rss/weather/Debrecen__HU/*http://weather.yahoo.com/forecast/HUXX0004_f.html</link>
+<description>Yahoo! Weather for Debrecen, HU</description>
+<language>en-us</language>
+<lastBuildDate>Tue, 05 Feb 2013 10:29 pm CET</lastBuildDate>
+<ttl>60</ttl>
+<yweather:location city="Debrecen" region=""   country="HU"/>
+<yweather:units temperature="F" distance="mi" pressure="in" speed="mph"/>
+<yweather:wind chill="36"   direction="180"   speed="7" />
+<yweather:atmosphere humidity="76"  visibility="6.21"  pressure="29.71"  rising="2" />
+<yweather:astronomy sunrise="7:52 am"   sunset="5:38 pm"/>
+<image>
+<title>Yahoo! Weather</title>
+<width>142</width>
+<height>18</height>
+<link>http://weather.yahoo.com</link>
+<url>http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif</url>
+</image>
+<item>
+<title>Conditions for Debrecen, HU at 10:29 pm CET</title>
+<geo:lat>47.48</geo:lat>
+<geo:long>21.63</geo:long>
+<link>http://us.rd.yahoo.com/dailynews/rss/weather/Debrecen__HU/*http://weather.yahoo.com/forecast/HUXX0004_f.html</link>
+<pubDate>Tue, 05 Feb 2013 10:29 pm CET</pubDate>
+<yweather:condition  text="Clear"  code="31"  temp="41"  date="Tue, 05 Feb 2013 10:29 pm CET" />
+<description><![CDATA[
+<img src="http://l.yimg.com/a/i/us/we/52/31.gif"/><br />
+<b>Current Conditions:</b><br />
+Clear, 41 F<BR />
+<BR /><b>Forecast:</b><BR />
+Tue - Showers. High: 42 Low: 32<br />
+Wed - Cloudy. High: 44 Low: 32<br />
+Thu - Rain/Snow Showers. High: 38 Low: 29<br />
+Fri - Cloudy. High: 36 Low: 27<br />
+Sat - Cloudy. High: 36 Low: 26<br />
+<br />
+<a href="http://us.rd.yahoo.com/dailynews/rss/weather/Debrecen__HU/*http://weather.yahoo.com/forecast/HUXX0004_f.html">Full Forecast at Yahoo! Weather</a><BR/><BR/>
+(provided by <a href="http://www.weather.com" >The Weather Channel</a>)<br/>
+]]></description>
+<yweather:forecast day="Tue" date="5 Feb 2013" low="32" high="42" text="Showers" code="11" />
+<yweather:forecast day="Wed" date="6 Feb 2013" low="32" high="44" text="Cloudy" code="26" />
+<yweather:forecast day="Thu" date="7 Feb 2013" low="29" high="38" text="Rain/Snow Showers" code="5" />
+<yweather:forecast day="Fri" date="8 Feb 2013" low="27" high="36" text="Cloudy" code="26" />
+<yweather:forecast day="Sat" date="9 Feb 2013" low="26" high="36" text="Cloudy" code="26" />
+<guid isPermaLink="false">HUXX0004_2013_02_09_7_00_CET</guid>
+</item>
+</channel>
+</rss>
+
+<!-- api9.weather.ch1.yahoo.com Tue Feb  5 21:21:33 PST 2013 -->
