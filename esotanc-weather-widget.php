@@ -19,20 +19,22 @@ function esotanc_weather_load_widgets() {
 
  
 class esotanc_weather_widget extends WP_Widget {
-/**
+	/**
 	 * Widget setup.
 	 */
 	function esotanc_weather_widget() {
 		/* Widget settings. */
 		$widget_options = array( 
 		 'classname' => 'esotanc_weather_widget', 
-		 'description' => __('Displays weather forecast up to five day.') );
+		 'description' => __('Displays weather forecast up to five day.') 
+		);
 
 		/* Widget control settings. */
 		$control_options = array( 
-		'width' => 300, 
-		'height' => 230, 
-		'id_base' => 'esotanc_weather_widget' );
+			'width' => 300, 
+			'height' => 230, 
+			'id_base' => 'esotanc_weather_widget'
+		);
 
 		/* Create the widget. */
 		$this->WP_Widget( 'esotanc_weather_widget', 'Weather Widget - Esotanc', $widget_options, $control_options );
@@ -82,26 +84,25 @@ class esotanc_weather_widget extends WP_Widget {
 		
 		
 		/* Make Cache for optimization */
-		
-		 $cache = dirname(__FILE__) . '/cache';
+		$cache = dirname(__FILE__) . '/cache';
 		 
 		/* Load the weather data from sotanc.hu */
 		 
 		function retrieveYahooWeather($zipCode="HUXX0002_f.xml") {
-		$cache = dirname(__FILE__) . '/cache';
-		$yahooUrl = "http://xml.weather.yahoo.com/forecastrss/";
-		$yahooZip = "$zipCode";
-		$yahooFullUrl = $yahooUrl . $yahooZip; 
-		$curlObject = curl_init();
-		curl_setopt($curlObject,CURLOPT_URL,$yahooFullUrl);
-		curl_setopt($curlObject,CURLOPT_HEADER,false);
-		curl_setopt($curlObject,CURLOPT_RETURNTRANSFER,true);
-		$returnYahooWeather = curl_exec($curlObject);
-		curl_close($curlObject);
-		$cachefile = fopen($cache, 'w');
-		fwrite($cachefile, $returnYahooWeather);
-		fclose($cachefile);
-		return $returnYahooWeather;
+			$cache = dirname(__FILE__) . '/cache';
+			$yahooUrl = "http://xml.weather.yahoo.com/forecastrss/";
+			$yahooZip = "$zipCode";
+			$yahooFullUrl = $yahooUrl . $yahooZip; 
+			$curlObject = curl_init();
+			curl_setopt($curlObject,CURLOPT_URL,$yahooFullUrl);
+			curl_setopt($curlObject,CURLOPT_HEADER,false);
+			curl_setopt($curlObject,CURLOPT_RETURNTRANSFER,true);
+			$returnYahooWeather = curl_exec($curlObject);
+			curl_close($curlObject);
+			$cachefile = fopen($cache, 'w');
+			fwrite($cachefile, $returnYahooWeather);
+			fclose($cachefile);
+			return $returnYahooWeather;
     	}
 		
 		/* Make Cache for optimization */
@@ -225,7 +226,10 @@ class esotanc_weather_widget extends WP_Widget {
 	
 		$varos=strtoupper($name);
 		if ($language=="hu"){
-		$back="_hu";}else {$back="";}
+			$back="_hu";
+		}else{
+			$back="";
+		}
 		$link='http://esotanc.hu/';
 		
 		/* Constuct the widget output */
@@ -236,26 +240,26 @@ class esotanc_weather_widget extends WP_Widget {
 		$width=$size;
 		$meret=0;
 		if ($width<129 and $width>=72) 
-			{
-			$meret=1;$margo1=round(((($width-15)-57)/2));
-			}
+		{
+		$meret=1;$margo1=round(((($width-15)-57)/2));
+		}
 			
 		if ($width>=129 and $width<186) 
-			{
-			$meret=2;$margo1=round(((($width-15)-(2*57))/3));
-			}
+		{
+		$meret=2;$margo1=round(((($width-15)-(2*57))/3));
+		}
 		if ($width>=186 and $width<243) 
-			{
-			$meret=3;$margo1=round(((($width-15)-(3*57))/4));
-			}
+		{
+		$meret=3;$margo1=round(((($width-15)-(3*57))/4));
+		}
 		if ($width>242 and $width<300) 
-			{
-			$meret=4;$margo1=round(((($width-15)-(4*57))/5));
-			}
+		{
+		$meret=4;$margo1=round(((($width-15)-(4*57))/5));
+		}
 		if ($width>=300 and $width<380) 
-			{
-			$meret=5;$margo1=round(((($width-15)-(5*57))/6));
-			}
+		{
+		$meret=5;$margo1=round(((($width-15)-(5*57))/6));
+		}
 		
 		echo '<div style="position:relative;border:0px;padding:0;margin:0px;background-color:'.$color.';width:'.$width.'px;height:230px;">';
 		
@@ -277,7 +281,7 @@ class esotanc_weather_widget extends WP_Widget {
 			'<span style="color:white;left:'.($margo1*2+92+$maxch[1]).'px;top:137px;font-weight:700;font-family:arial;font-size:15px;position:absolute;">'.$max[1].'&deg;</span>'.
 			'<span style="color:white;left:'.($margo1*2+92+$minch[1]).'px;top:175px;font-weight:700;font-family:arial;font-size:15px;position:absolute;">'.$min[1].'&deg;</span>';
 		}
-			if ($meret>=3) {
+		if ($meret>=3) {
 			echo'<img style="top:0px;left:'.(($margo1*3)+128).'px;position:absolute;" src = "../wp-content/plugins/weather-widget-esotanc-weather/img/'.$color.'0.jpg" />'.
 			'<img style="top:76px;left:'.($margo1*3+128).'px;position:absolute;" src = "../wp-content/plugins/weather-widget-esotanc-weather/img/'.$ikon[2].'" />'.
 			'<span style="color:white;left:'.($margo1*3+184+$daynamech[2]).'px;top:25px;font-family:arial;font-size:10px;color:'.$daynamecolor.';position:absolute;">'.$dayname[2].'</span>'.
@@ -286,7 +290,7 @@ class esotanc_weather_widget extends WP_Widget {
 			'<span style="color:white;left:'.($margo1*3+149+$maxch[2]).'px;top:137px;font-weight:700;font-family:arial;font-size:15px;position:absolute;">'.$max[2].'&deg;</span>'.
 			'<span style="color:white;left:'.($margo1*3+149+$minch[2]).'px;top:175px;font-weight:700;font-family:arial;font-size:15px;position:absolute;">'.$min[2].'&deg;</span>';
 		}
-				if ($meret>=4) {
+		if ($meret>=4) {
 			echo'<img style="top:0px;left:'.(($margo1*4)+185).'px;position:absolute;" src = "../wp-content/plugins/weather-widget-esotanc-weather/img/'.$color.'1.jpg" />'.
 			'<img style="top:76px;left:'.($margo1*4+185).'px;position:absolute;" src = "../wp-content/plugins/weather-widget-esotanc-weather/img/'.$ikon[3].'" />'.
 			'<span style="color:white;left:'.(($margo1*4)+244+$daynamech[3]).'px;top:25px;font-family:arial;font-size:10px;color:'.$daynamecolor.';position:absolute;">'.$dayname[3].'</span>'.
@@ -305,15 +309,13 @@ class esotanc_weather_widget extends WP_Widget {
 			'<span style="color:white;left:'.($margo1*5+263+$minch[4]).'px;top:175px;font-weight:700;font-family:arial;font-size:15px;position:absolute;">'.$min[4].'&deg;</span>';
 		}
 		
-			echo '<div style="position:absolute;top:0px;height:15px;border:0px;padding:0;margin:0px;background-color:'.$upperheadwp.';width:'.$width.'px;height:20px;"></div>';
-			echo '<div style="position:absolute;top:20px;height:210px;width:15px;border:0px;padding:0;margin:0px;background-color:'.$sidebarwp.';"></div>';
-			echo '<a href="'.$link.'" title="esotanc" style="text-decoration:none;text-transform:none;color:'.$textcolorwp.';left:20px;top:212px;font-weight:400;font-family:arial;font-size:11px;position:absolute;" TARGET="_blank">ESOTANC.HU</a>';
-			if ($width>240){echo '<span style="text-decoration:none;text-transform:none;color:'.$textcolorwp.';left:100px;top:212px;font-weight:400;font-family:arial;font-size:11px;position:absolute;"> 
-			- '.$lan[0][0].'</span>';}
-			echo '<span style="text-decoration:none;text-transform:none;color:'.$textcolorwp.';left:5px;top:2px;font-weight:400;font-family:verdana;font-size:11px;position:absolute;">'.$varos.'</span>'.
-			'</div>';
-					
-					
+		echo '<div style="position:absolute;top:0px;height:15px;border:0px;padding:0;margin:0px;background-color:'.$upperheadwp.';width:'.$width.'px;height:20px;"></div>';
+		echo '<div style="position:absolute;top:20px;height:210px;width:15px;border:0px;padding:0;margin:0px;background-color:'.$sidebarwp.';"></div>';
+		echo '<a href="'.$link.'" title="esotanc" style="text-decoration:none;text-transform:none;color:'.$textcolorwp.';left:20px;top:212px;font-weight:400;font-family:arial;font-size:11px;position:absolute;" TARGET="_blank">ESOTANC.HU</a>';
+		if ($width>240){echo '<span style="text-decoration:none;text-transform:none;color:'.$textcolorwp.';left:100px;top:212px;font-weight:400;font-family:arial;font-size:11px;position:absolute;"> 
+		- '.$lan[0][0].'</span>';}
+		echo '<span style="text-decoration:none;text-transform:none;color:'.$textcolorwp.';left:5px;top:2px;font-weight:400;font-family:verdana;font-size:11px;position:absolute;">'.$varos.'</span>'.
+		'</div>';					
 		/* After widget (defined by themes). */
 		echo $after_widget;
 	}
